@@ -1,5 +1,5 @@
-import { P as fallback, I as attr, J as attr_class, X as clsx, O as slot, Q as bind_props, E as pop, C as push } from "./index.js";
-/* empty css                                           */
+import { R as fallback, I as attr, J as attr_class, W as clsx, O as slot, S as bind_props, E as pop, C as push } from "./index.js";
+/* empty css                                         */
 function BaseButton($$payload, $$props) {
   push();
   let isLink, buttonClasses;

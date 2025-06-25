@@ -1,4 +1,4 @@
-import { n as noop, T as getContext } from "./index.js";
+import { n as noop, Q as getContext } from "./index.js";
 import "clsx";
 import "./exports.js";
 function get(key, parse = JSON.parse) {

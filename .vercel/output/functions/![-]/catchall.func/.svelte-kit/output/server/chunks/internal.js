@@ -1,6 +1,5 @@
 import { H as HYDRATION_ERROR, g as get_next_sibling, d as define_property, a as set_active_reaction, b as set_active_effect, i as is_array, c as active_effect, e as active_reaction, f as init_operations, h as get_first_child, j as HYDRATION_START, k as HYDRATION_END, l as hydration_failed, m as clear_text_content, o as array_from, p as component_root, q as create_text, r as branch, t as push, u as component_context, v as pop, w as set, L as LEGACY_PROPS, x as get, y as flushSync, z as mutable_source, A as render, C as push$1, D as setContext, E as pop$1 } from "./index.js";
 import "clsx";
-import "./shared-server.js";
 let base = "";
 let assets = base;
 const app_dir = "_app";
@@ -15,6 +14,16 @@ function reset() {
 }
 function set_assets(path) {
   assets = initial.assets = path;
+}
+let public_env = {};
+let safe_public_env = {};
+function set_private_env(environment) {
+}
+function set_public_env(environment) {
+  public_env = environment;
+}
+function set_safe_public_env(environment) {
+  safe_public_env = environment;
 }
 function hydration_mismatch(location) {
   {
@@ -492,7 +501,7 @@ const options = {
   root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="en" class="h-full">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<link rel="apple-touch-icon" sizes="180x180" href="' + assets2 + '/images/logo/weknowco-icon.svg" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		<link rel="preconnect" href="https://fonts.googleapis.com">\n		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">\n		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">\n		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover" class="h-full">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>",
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="en" class="h-full">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<link rel="apple-touch-icon" sizes="180x180" href="' + assets2 + '/images/logo/icon.svg" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		<link rel="preconnect" href="https://fonts.googleapis.com">\n		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">\n		<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">\n		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover" class="h-full">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -564,7 +573,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "1fd0gpc"
+  version_hash: "1chqims"
 };
 async function get_hooks() {
   let handle;
@@ -588,13 +597,18 @@ export {
   app_dir as c,
   read_implementation as d,
   options as e,
-  set_assets as f,
+  set_private_env as f,
   get_hooks as g,
-  set_building as h,
-  set_manifest as i,
-  set_prerendering as j,
+  prerendering as h,
+  set_public_env as i,
+  set_safe_public_env as j,
+  set_read_implementation as k,
+  set_assets as l,
+  set_building as m,
+  set_manifest as n,
   override as o,
-  prerendering as p,
+  public_env as p,
+  set_prerendering as q,
   reset as r,
-  set_read_implementation as s
+  safe_public_env as s
 };

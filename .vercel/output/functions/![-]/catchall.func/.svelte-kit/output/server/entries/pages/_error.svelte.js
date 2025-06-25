@@ -1,7 +1,7 @@
 import { F as store_get, K as escape_html, N as unsubscribe_stores, E as pop, C as push } from "../../chunks/index.js";
 import { p as page } from "../../chunks/stores.js";
 import { B as BaseButton } from "../../chunks/BaseButton.js";
-/* empty css                                                      */
+/* empty css                                                    */
 function _error($$payload, $$props) {
   push();
   var $$store_subs;

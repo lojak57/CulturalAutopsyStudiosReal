@@ -1,5 +1,5 @@
-import { S as head } from "../../../../chunks/index.js";
-/* empty css                                                            */
+import { P as head } from "../../../../chunks/index.js";
+/* empty css                                                          */
 import { B as BaseCard } from "../../../../chunks/BaseCard.js";
 function _page($$payload) {
   head($$payload, ($$payload2) => {

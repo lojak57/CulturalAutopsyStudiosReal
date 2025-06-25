@@ -7,10 +7,10 @@ function __memo(fn) {
 return {
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set(["favicon.ico","favicon.png","favicon.svg","images/5280-hero-bg.png","images/hero-mountains.png","images/logo/weknowco-full-logo.png","images/logo/weknowco-icon.svg"]),
+	assets: new Set(["favicon.ico","favicon.png","favicon.svg"]),
 	mimeTypes: {".png":"image/png",".svg":"image/svg+xml"},
 	_: {
-		client: {start:"_app/immutable/entry/start.CzbB8Q9V.js",app:"_app/immutable/entry/app.D4TTZoMM.js",imports:["_app/immutable/entry/start.CzbB8Q9V.js","_app/immutable/chunks/_NdZv0b3.js","_app/immutable/chunks/DtJ7uDLr.js","_app/immutable/chunks/epgPq6-0.js","_app/immutable/chunks/CYm4uuzn.js","_app/immutable/entry/app.D4TTZoMM.js","_app/immutable/chunks/DtJ7uDLr.js","_app/immutable/chunks/B67tOxxB.js","_app/immutable/chunks/BmrP2hN_.js","_app/immutable/chunks/epgPq6-0.js","_app/immutable/chunks/DlIAEsFF.js","_app/immutable/chunks/CYm4uuzn.js","_app/immutable/chunks/BSAJm3JF.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
+		client: {start:"_app/immutable/entry/start.Cy2LdEU-.js",app:"_app/immutable/entry/app.Dgza3z-V.js",imports:["_app/immutable/entry/start.Cy2LdEU-.js","_app/immutable/chunks/DR-4e14X.js","_app/immutable/chunks/CEDIh2CV.js","_app/immutable/chunks/DO2sdSiD.js","_app/immutable/chunks/DIBajOK-.js","_app/immutable/entry/app.Dgza3z-V.js","_app/immutable/chunks/Cf8Brr10.js","_app/immutable/chunks/CEDIh2CV.js","_app/immutable/chunks/vgZksfNZ.js","_app/immutable/chunks/D1l4T5Fa.js","_app/immutable/chunks/DRwHbd66.js","_app/immutable/chunks/DIBajOK-.js","_app/immutable/chunks/BSPoxmuE.js","_app/immutable/chunks/BfrU_wda.js","_app/immutable/chunks/BL7cTndO.js","_app/immutable/chunks/DO2sdSiD.js"],stylesheets:[],fonts:[],uses_env_dynamic_public:false},
 		nodes: [
 			__memo(() => import('../output/server/nodes/0.js')),
 			__memo(() => import('../output/server/nodes/1.js')),
@@ -26,7 +26,10 @@ return {
 			__memo(() => import('../output/server/nodes/11.js')),
 			__memo(() => import('../output/server/nodes/12.js')),
 			__memo(() => import('../output/server/nodes/13.js')),
-			__memo(() => import('../output/server/nodes/14.js'))
+			__memo(() => import('../output/server/nodes/14.js')),
+			__memo(() => import('../output/server/nodes/15.js')),
+			__memo(() => import('../output/server/nodes/16.js')),
+			__memo(() => import('../output/server/nodes/17.js'))
 		],
 		routes: [
 			{
@@ -58,10 +61,31 @@ return {
 				endpoint: __memo(() => import('../output/server/entries/endpoints/api/leads/_server.ts.js'))
 			},
 			{
+				id: "/blog",
+				pattern: /^\/blog\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 15 },
+				endpoint: null
+			},
+			{
 				id: "/(company)/contact",
 				pattern: /^\/contact\/?$/,
 				params: [],
 				page: { layouts: [0,2,], errors: [1,,], leaf: 8 },
+				endpoint: null
+			},
+			{
+				id: "/episodes",
+				pattern: /^\/episodes\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 16 },
+				endpoint: null
+			},
+			{
+				id: "/manifesto",
+				pattern: /^\/manifesto\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 17 },
 				endpoint: null
 			},
 			{

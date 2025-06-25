@@ -1,29 +1,34 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { SITE_CONFIG } from '$lib/config/site.config';
 	
 	let mobileMenuOpen = false;
 	
 	const navItems = [
-		{ label: 'Home', href: '/' },
-		{ label: '$5,280 Site', href: '/5280-site' },
-		{ label: 'Plans & Growth', href: '/plans-growth' },
-		{ label: 'Solo Biz Helper', href: '/solo-biz-helper', special: true },
-		{ label: 'About', href: '/about' }
+		{ label: 'Index', href: '/' },
+		{ label: 'Archive', href: '/episodes' },
+		{ label: 'Tape', href: '/blog' },
+		{ label: 'Exit', href: '/manifesto', special: true }
 	];
 	
 	$: currentPath = $page.url.pathname;
 </script>
 
-<nav class="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+<nav class="bg-tape-gray-900/95 backdrop-blur-sm border-b-2 border-vcr-blue-600/30 sticky top-0 z-50">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6">
 		<div class="flex justify-between items-center h-14 sm:h-16">
-			<!-- Favicon (moved from right side) -->
+			<!-- Logo/Title -->
 			<div class="flex items-center">
-				<img 
-					src="/favicon.png" 
-					alt="" 
-					class="w-10 h-10 lg:w-12 lg:h-12 opacity-80 hover:opacity-100 transition-opacity duration-200"
-				/>
+				<a href="/" class="flex items-center group">
+					<div class="w-10 h-10 lg:w-12 lg:h-12 bg-vcr-blue-600/20 border border-vcr-blue-400 
+							   flex items-center justify-center font-mono text-vcr-blue-400 mr-3
+							   group-hover:bg-vcr-blue-600/30 transition-colors">
+						CAS
+					</div>
+					<span class="hidden sm:block font-mono text-paper-white text-sm lg:text-base">
+						CULTURAL_AUTOPSY_STUDIOS
+					</span>
+				</a>
 			</div>
 			
 			<!-- Desktop Navigation -->
@@ -31,9 +36,14 @@
 				{#each navItems as item}
 					<a 
 						href={item.href}
-						class="text-granite-gray-600 hover:text-skyline-blue-600 transition-colors font-medium {currentPath === item.href ? 'text-skyline-blue-600 font-semibold' : ''} {item.special ? 'text-red-rocks-rust hover:text-red-rocks-rust/80' : ''}"
+						class="font-mono text-sm lg:text-base transition-all duration-200
+							   {currentPath === item.href 
+								? 'text-postit-yellow-500' 
+								: item.special 
+									? 'text-trauma-red-400 hover:text-trauma-red-300' 
+									: 'text-tape-gray-400 hover:text-paper-white'}"
 					>
-						{item.label}
+						[{item.label}]
 					</a>
 				{/each}
 			</div>
@@ -42,9 +52,11 @@
 			<div class="hidden md:flex items-center">
 				<a 
 					href="/contact"
-					class="bg-skyline-blue-600 text-white px-4 py-2 lg:px-6 lg:py-2 rounded-lg hover:bg-skyline-blue-700 transition-colors font-semibold text-sm lg:text-base"
+					class="bg-transparent border-2 border-postit-yellow-500 text-postit-yellow-500 
+						   px-4 py-2 lg:px-6 lg:py-2 font-mono text-sm lg:text-base
+						   hover:bg-postit-yellow-500 hover:text-tape-gray-900 transition-all duration-200"
 				>
-					Start Your Climb
+					[Join_Autopsy]
 				</a>
 			</div>
 			
@@ -54,43 +66,55 @@
 				on:click={() => mobileMenuOpen = !mobileMenuOpen}
 				aria-label="Toggle menu"
 			>
-				<svg class="w-5 h-5 sm:w-6 sm:h-6 text-granite-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-					{#if mobileMenuOpen}
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-					{:else}
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-					{/if}
-				</svg>
+				<div class="space-y-1">
+					<div class="w-5 h-0.5 bg-vcr-blue-400 transition-all duration-200 
+							   {mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}"></div>
+					<div class="w-5 h-0.5 bg-vcr-blue-400 transition-all duration-200 
+							   {mobileMenuOpen ? 'opacity-0' : ''}"></div>
+					<div class="w-5 h-0.5 bg-vcr-blue-400 transition-all duration-200 
+							   {mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}"></div>
+				</div>
 			</button>
 		</div>
 		
 		<!-- Mobile Navigation -->
 		{#if mobileMenuOpen}
-			<div class="md:hidden border-t border-gray-200 py-3 sm:py-4">
-				<!-- Logo in mobile menu -->
-				<div class="flex justify-center mb-4 sm:mb-6">
-					<img src="/images/logo/weknowco-icon.svg" alt="" class="w-12 h-12 sm:w-16 sm:h-16 opacity-20" />
-				</div>
-				<div class="flex flex-col space-y-3 sm:space-y-4">
+			<div class="md:hidden border-t-2 border-vcr-blue-600/30 py-4 bg-tape-gray-900">
+				<div class="flex flex-col space-y-4">
 					{#each navItems as item}
 						<a 
 							href={item.href}
-							class="text-granite-gray-600 hover:text-skyline-blue-600 transition-colors font-medium flex items-center {currentPath === item.href ? 'text-skyline-blue-600 font-semibold' : ''} {item.special ? 'text-red-rocks-rust hover:text-red-rocks-rust/80' : ''}"
+							class="font-mono text-sm flex items-center transition-colors
+								   {currentPath === item.href 
+									? 'text-postit-yellow-500' 
+									: item.special 
+										? 'text-trauma-red-400' 
+										: 'text-tape-gray-400'}"
 							on:click={() => mobileMenuOpen = false}
 						>
-							<span class="w-1 h-1 bg-aspen-gold-400 rounded-full mr-3"></span>
-							{item.label}
+							<span class="w-2 h-2 bg-vcr-blue-600 mr-3 animate-pulse"></span>
+							[{item.label}]
 						</a>
 					{/each}
 					<a 
 						href="/contact"
-						class="bg-skyline-blue-600 text-white px-6 py-3 rounded-lg hover:bg-skyline-blue-700 transition-colors font-semibold text-center mt-3 sm:mt-4"
+						class="bg-vcr-blue-600 text-paper-white px-6 py-3 font-mono text-center mt-4
+							   border-2 border-vcr-blue-400 hover:bg-vcr-blue-700 transition-colors"
 						on:click={() => mobileMenuOpen = false}
 					>
-						Start Your Climb
+						[Join_Autopsy]
 					</a>
 				</div>
 			</div>
 		{/if}
 	</div>
+	
+	<!-- VHS tracking lines effect -->
+	<div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-vcr-blue-400/50 to-transparent animate-pulse"></div>
 </nav>
+
+<style>
+	nav {
+		box-shadow: 0 2px 20px rgba(81, 69, 235, 0.2);
+	}
+</style>

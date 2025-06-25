@@ -15,7 +15,10 @@ export const nodes = [
 	() => import('./nodes/11'),
 	() => import('./nodes/12'),
 	() => import('./nodes/13'),
-	() => import('./nodes/14')
+	() => import('./nodes/14'),
+	() => import('./nodes/15'),
+	() => import('./nodes/16'),
+	() => import('./nodes/17')
 ];
 
 export const server_loads = [];
@@ -24,7 +27,10 @@ export const dictionary = {
 		"/": [6],
 		"/(marketing)/5280-site": [11,[4]],
 		"/(company)/about": [7,[2]],
+		"/blog": [15],
 		"/(company)/contact": [8,[2]],
+		"/episodes": [16],
+		"/manifesto": [17],
 		"/(marketing)/plans-growth": [12,[4]],
 		"/(legal)/privacy": [9,[3]],
 		"/(marketing)/solo-biz-helper": [13,[4]],

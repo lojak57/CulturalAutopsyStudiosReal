@@ -1,100 +1,141 @@
 <script lang="ts">
-	import { PricingCard } from '$lib/components/marketing';
+	import { SITE_CONFIG } from '$lib/config/site.config';
 	
-	// Plan data
-	const plans = [
+	// Featured shows with episode counts
+	const featuredShows = [
 		{
-			title: 'Trailhead',
-			price: '$750',
-			description: 'Perfect for getting started with consistent content and basic optimization.',
-			features: [
-				'4 geo-researched blog posts',
-				'Quarterly strategy call',
-				'Search tune-ups',
-				'Schema markup optimization',
-				'Basic analytics reporting'
-			],
-			ctaText: 'Start the Trail',
-			ctaHref: '/contact?plan=trailhead'
+			title: 'The Boardroom',
+			description: 'Corporate trauma as performance art. Where C-suite meets cry-suite.',
+			episodes: '47 episodes',
+			latestEpisode: 'The Exit Interview That Never Ends',
+			vibe: 'corporate-horror',
+			emoji: '💼'
 		},
 		{
-			title: 'Summit',
-			price: '$1,800',
-			description: 'Comprehensive marketing with ads, video content, and continuous optimization.',
-			features: [
-				'Everything in Trailhead',
-				'Google/Meta ads management',
-				'Monthly brand video',
-				'Email drip campaigns',
-				'Answer engine optimization',
-				'Monthly performance review'
-			],
-			popular: true,
-			ctaText: 'Reach the Summit',
-			ctaHref: '/contact?plan=summit'
+			title: 'Matrix Deep Dive',
+			description: 'Red pills, blue screens, and the digital reality we never asked for.',
+			episodes: '33 episodes',
+			latestEpisode: 'Why Your Zoom Background Is Your Prison',
+			vibe: 'tech-philosophy',
+			emoji: '💊'
 		},
 		{
-			title: 'Peak Season',
-			price: '$3,500',
-			description: 'Full-scale marketing operation with testing, influencers, and premium content.',
-			features: [
-				'Everything in Summit',
-				'Bi-weekly landing page tests',
-				'Influencer micro-campaigns',
-				'Quarterly brand films',
-				'Advanced prompt libraries',
-				'Priority support'
-			],
-			ctaText: 'Claim the Peak',
-			ctaHref: '/contact?plan=peak'
+			title: 'Memory Glitch Series',
+			description: 'When nostalgia.exe stops responding. A journey through corrupted memories.',
+			episodes: '28 episodes',
+			latestEpisode: 'The MySpace Profile That Still Haunts Me',
+			vibe: 'digital-nostalgia',
+			emoji: '📼'
 		}
 	];
 </script>
 
-<!-- Plans Snapshot -->
-<section class="py-20 bg-gray-50">
-	<div class="max-w-7xl mx-auto px-6">
+<!-- Featured Shows Section -->
+<section class="py-20 bg-tape-gray-900 text-paper-white relative overflow-hidden">
+	<!-- Background noise pattern -->
+	<div class="absolute inset-0 opacity-10">
+		<div class="absolute inset-0 bg-[repeating-conic-gradient(theme(colors.vcr-blue.600)_0deg_10deg,transparent_10deg_20deg)] 
+					bg-[length:40px_40px]"></div>
+	</div>
+	
+	<div class="relative z-10 max-w-7xl mx-auto px-6">
 		<div class="text-center mb-16">
-			<h2 class="font-display text-3xl md:text-4xl font-bold text-skyline-blue-600 mb-4">
-				Choose Your Altitude
+			<h2 class="text-4xl md:text-6xl font-mono text-postit-yellow-500 mb-4">
+				[FEATURED_SHOWS]
 			</h2>
-			<p class="text-xl text-granite-gray-600 max-w-3xl mx-auto">
-				Start with the $5,280 site, then choose how high you want to climb. 
-				Simple monthly plans—no long-term handcuffs.
+			<p class="text-xl font-serif italic text-tape-gray-300 max-w-3xl mx-auto">
+				Current frequencies broadcasting from the void
 			</p>
 		</div>
 		
 		<div class="grid md:grid-cols-3 gap-8">
-			{#each plans as plan}
-				<PricingCard {...plan} />
+			{#each featuredShows as show}
+				<div class="bg-tape-gray-800 border-2 border-vcr-blue-600/50 hover:border-vcr-blue-400 
+						   transition-all duration-300 p-6 group hover:shadow-vhs hover:-translate-y-1">
+					<!-- Show emoji -->
+					<div class="text-4xl mb-4 group-hover:animate-bounce">
+						{show.emoji}
+					</div>
+					
+					<!-- Show title -->
+					<h3 class="text-2xl font-display text-vcr-blue-400 mb-3 group-hover:text-postit-yellow-500 transition-colors">
+						{show.title}
+					</h3>
+					
+					<!-- Description -->
+					<p class="text-tape-gray-300 font-serif italic mb-4">
+						{show.description}
+					</p>
+					
+					<!-- Episode info -->
+					<div class="space-y-2 mb-6">
+						<p class="text-sm font-mono text-tape-gray-400">
+							// {show.episodes}
+						</p>
+						<p class="text-xs font-mono text-trauma-red-400">
+							latest: "{show.latestEpisode}"
+						</p>
+					</div>
+					
+					<!-- CTA -->
+					<a 
+						href="/episodes?show={encodeURIComponent(show.title)}"
+						class="inline-flex items-center text-vcr-blue-400 hover:text-postit-yellow-500 
+							   font-mono text-sm transition-colors group/link"
+					>
+						[LISTEN_NOW]
+						<span class="ml-2 group-hover/link:translate-x-1 transition-transform">→</span>
+					</a>
+					
+					<!-- Glitch line on hover -->
+					<div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent 
+							   via-vcr-blue-400 to-transparent opacity-0 group-hover:opacity-100 
+							   transition-opacity duration-300"></div>
+				</div>
 			{/each}
 		</div>
 		
-		<div class="text-center mt-12">
-			<p class="text-granite-gray-600 mb-6">
-				Want to see the full growth journey and business outcomes?
+		<!-- Bottom CTA -->
+		<div class="text-center mt-16">
+			<p class="text-tape-gray-400 font-mono mb-6">
+				// access.all_episodes = true
 			</p>
 			<div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
 				<a 
-					href="/plans-growth" 
-					class="inline-flex items-center text-skyline-blue-600 hover:text-skyline-blue-700 font-medium group"
+					href="/episodes" 
+					class="px-6 py-3 bg-vcr-blue-600 hover:bg-vcr-blue-700 text-paper-white 
+						   font-mono border-2 border-vcr-blue-400 transition-all duration-200
+						   hover:shadow-vhs inline-block"
 				>
-					See Your Growth Journey
-					<svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-					</svg>
+					[BROWSE_FULL_ARCHIVE]
 				</a>
-				<span class="text-granite-gray-400">or</span>
+				<span class="text-tape-gray-500 font-mono">||</span>
 				<a 
-					href="/contact" 
-					class="inline-flex items-center text-skyline-blue-600 hover:text-skyline-blue-700 font-medium group"
+					href={SITE_CONFIG.social.substack}
+					class="px-6 py-3 bg-transparent hover:bg-postit-yellow-500/10 text-postit-yellow-500 
+						   font-mono border-2 border-postit-yellow-500 transition-all duration-200
+						   hover:shadow-vhs inline-block"
 				>
-					Schedule a Discovery Call
-					<svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-					</svg>
+					[SUBSCRIBE_FOR_BONUS]
 				</a>
 			</div>
 		</div>
 	</div>
 </section>
+
+<style>
+	/* Add a subtle static animation to the section */
+	@keyframes static-flicker {
+		0%, 100% { opacity: 0.1; }
+		50% { opacity: 0.15; }
+	}
+	
+	section::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='noise'%3E%3CfeTurbulence baseFrequency='0.9' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+		pointer-events: none;
+		animation: static-flicker 3s infinite;
+	}
+</style>

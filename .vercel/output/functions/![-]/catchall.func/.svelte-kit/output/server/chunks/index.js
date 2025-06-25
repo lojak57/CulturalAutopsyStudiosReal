@@ -1484,6 +1484,9 @@ function ensure_array_like(array_like_or_iterator) {
   }
   return [];
 }
+function maybe_selected(payload, value) {
+  return value === payload.select_value ? " selected" : "";
+}
 export {
   render as A,
   BROWSER as B,
@@ -1500,15 +1503,16 @@ export {
   stringify as M,
   unsubscribe_stores as N,
   slot as O,
-  fallback as P,
-  bind_props as Q,
-  spread_props as R,
-  head as S,
-  getContext as T,
-  attr_style as U,
-  copy_payload as V,
-  assign_payload as W,
-  clsx as X,
+  head as P,
+  getContext as Q,
+  fallback as R,
+  bind_props as S,
+  spread_props as T,
+  copy_payload as U,
+  assign_payload as V,
+  clsx as W,
+  attr_style as X,
+  maybe_selected as Y,
   set_active_reaction as a,
   set_active_effect as b,
   active_effect as c,

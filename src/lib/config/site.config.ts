@@ -1,66 +1,112 @@
 /**
  * Site Configuration
- * Change these values when cloning for a new marketing site
+ * Cultural Autopsy Studios - "We kept the tape running."
  */
 
 export const SITE_CONFIG = {
   // Basic Info
-  name: "weKnowCO",
-  tagline: "Turn Colorado Dreams Into Mile-High Brands",
-  domain: "weknowco.com",
+  name: "Cultural Autopsy Studios",
+  tagline: "We kept the tape running.",
+  domain: "culturalautopsystudios.com",
   
   // Contact Info
-  email: "hello@weknowco.com",
-  phone: "(720) 555-5280",
-  calendlyUrl: "https://calendly.com/weknowco/discovery",
+  email: "hello@culturalautopsystudios.com",
+  phone: "(555) MEMORY-1",
+  calendlyUrl: "https://calendly.com/cultural-autopsy/session",
   
   // Branding
   logo: {
-    full: "/images/logo/weknowco-full-logo.png",
-    icon: "/images/logo/weknowco-icon.svg",
+    full: "/images/logo/cas-full-logo.png",
+    icon: "/images/logo/cas-icon.svg",
   },
   
-  // Pricing (make it memorable!)
-  heroPrice: "$5,280", // Denver's elevation
-  priceValue: 5280,
-  pricingHook: "5,280 feet. 5,280 dollars. Elevated marketing at altitude.",
+  // Core Message
+  heroPrice: "Free", // Memory is priceless
+  priceValue: 0,
+  pricingHook: "Truth. Memory. Empathy. Distribution.",
   
   // Location/Theme
   location: {
-    city: "Denver",
-    state: "Colorado",
-    region: "Mile-High",
-    timezone: "America/Denver",
+    city: "Everywhere",
+    state: "Memory", 
+    region: "Digital",
+    timezone: "Always/Now",
   },
   
-  // Brand Colors (update in tailwind.config.js too)
+  // Brand Colors (VHS aesthetic)
   colorNames: {
-    primary: "skyline-blue",
-    secondary: "aspen-gold",
-    neutral: "granite-gray",
-    light: "snowfield-white",
-    accent: "red-rocks-rust",
+    primary: "vcr-blue",
+    secondary: "postit-yellow", 
+    neutral: "tape-gray",
+    light: "paper-white",
+    accent: "trauma-red",
   },
   
   // Social Links
   social: {
-    twitter: "https://twitter.com/weknowco",
-    linkedin: "https://linkedin.com/company/weknowco",
-    instagram: "https://instagram.com/weknowco",
+    twitter: "https://twitter.com/culturalautopsy",
+    linkedin: "https://linkedin.com/company/cultural-autopsy-studios", 
+    instagram: "https://instagram.com/culturalautopsy",
+    substack: "https://culturalautopsy.substack.com",
   },
   
   // API Configuration
   api: {
-    leadEndpoint: "/api/leads", // TrueForm will route based on whiteLabelId
-    whiteLabelId: "weknowco",
+    leadEndpoint: "/api/leads",
+    whiteLabelId: "cultural-autopsy-studios",
   },
   
   // Feature Flags
   features: {
-    showTestimonials: true,
-    showBlog: false,
+    showTestimonials: false,
+    showBlog: true,
     showCaseStudies: false,
-  }
+    showEpisodes: true,
+    showManifesto: true,
+    showAvatars: true,
+  },
+
+  // Avatars/Characters
+  avatars: [
+    {
+      name: "Holden",
+      role: "The Interviewer",
+      quote: "Every question is a trap door to memory.",
+      setting: "podcast desk"
+    },
+    {
+      name: "Lilly", 
+      role: "The Anchor",
+      quote: "Breaking news: we never stopped breaking.",
+      setting: "news anchor table"
+    },
+    {
+      name: "Eva",
+      role: "The Observer", 
+      quote: "Silence speaks louder than screaming.",
+      setting: "quiet hallway"
+    },
+    {
+      name: "Reese",
+      role: "The Philosopher",
+      quote: "Every ending is someone else's middle.",
+      setting: "rooftop at night"
+    },
+    {
+      name: "The Archivist",
+      role: "Keeper of Tapes",
+      quote: "We remember everything so you don't have to.",
+      setting: "memory archive terminal"
+    }
+  ],
+
+  // Shows/Content
+  shows: [
+    "The Boardroom",
+    "Matrix Deep Dive", 
+    "Cultural Autopsy: The Mainline Feed",
+    "Memory Glitch Series"
+  ]
 };
 
 // Helper function to get full URL
@@ -73,7 +119,7 @@ export function getFullUrl(path = ""): string {
 export function getSiteMetaTags() {
   return {
     title: `${SITE_CONFIG.name} | ${SITE_CONFIG.tagline}`,
-    description: `${SITE_CONFIG.heroPrice} gets you a complete website that works. 30 days. 7 pages. Zero fluff.`,
+    description: `We make podcasts that feel like diaries, essays that feel like therapy, and memes that feel like memory.`,
     url: getFullUrl(),
     image: getFullUrl(SITE_CONFIG.logo.full),
   };

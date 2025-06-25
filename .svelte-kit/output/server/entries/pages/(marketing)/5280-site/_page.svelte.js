@@ -1,9 +1,8 @@
-import { P as fallback, J as attr_class, I as attr, K as escape_html, O as slot, Q as bind_props, G as ensure_array_like, E as pop, C as push, R as spread_props, M as stringify, S as head } from "../../../../chunks/index.js";
-/* empty css                                                            */
-import { B as BaseCard } from "../../../../chunks/BaseCard.js";
-import "clsx";
-import { B as BaseButton } from "../../../../chunks/BaseButton.js";
-import { L as LeadCaptureWizard } from "../../../../chunks/LeadCaptureWizard.js";
+import { R as fallback, J as attr_class, I as attr, K as escape_html, O as slot, S as bind_props, G as ensure_array_like, T as spread_props, M as stringify, C as push, E as pop, U as copy_payload, V as assign_payload, P as head } from "../../../../chunks/index.js";
+/* empty css                                                          */
+function lazyImport(importFn) {
+  return importFn().then((module) => module.default);
+}
 function FeatureCard($$payload, $$props) {
   let icon = fallback($$props["icon"], "");
   let title = fallback($$props["title"], "");
@@ -28,20 +27,6 @@ function FeatureCard($$payload, $$props) {
   $$payload.out += `<!----></div>`;
   bind_props($$props, { icon, title, description, highlight });
 }
-function ChecklistItem($$payload, $$props) {
-  let text = fallback($$props["text"], "");
-  let included = fallback($$props["included"], true);
-  $$payload.out += `<li${attr_class("checklist-item svelte-w9vzty", void 0, { "excluded": !included })}><svg class="checklist-icon svelte-w9vzty" fill="none" stroke="currentColor" viewBox="0 0 24 24">`;
-  if (included) {
-    $$payload.out += "<!--[-->";
-    $$payload.out += `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-    $$payload.out += `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>`;
-  }
-  $$payload.out += `<!--]--></svg> <span class="checklist-text svelte-w9vzty">${escape_html(text)}</span></li>`;
-  bind_props($$props, { text, included });
-}
 function ValueProp($$payload, $$props) {
   let number = fallback($$props["number"], "");
   let label = fallback($$props["label"], "");
@@ -55,28 +40,6 @@ function ValueProp($$payload, $$props) {
   }
   $$payload.out += `<!--]--></div></div>`;
   bind_props($$props, { number, label, description });
-}
-function TimelineItem($$payload, $$props) {
-  push();
-  let week = fallback($$props["week"], "");
-  let title = fallback($$props["title"], "");
-  let tasks = fallback($$props["tasks"], () => [], true);
-  $$payload.out += `<div class="timeline-item svelte-zj5mde"><div class="timeline-marker svelte-zj5mde"><div class="timeline-week svelte-zj5mde">${escape_html(week)}</div></div> <div class="timeline-content svelte-zj5mde"><h4 class="timeline-title svelte-zj5mde">${escape_html(title)}</h4> `;
-  if (tasks.length > 0) {
-    $$payload.out += "<!--[-->";
-    const each_array = ensure_array_like(tasks);
-    $$payload.out += `<ul class="timeline-tasks svelte-zj5mde"><!--[-->`;
-    for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-      let task = each_array[$$index];
-      $$payload.out += `<li class="svelte-zj5mde">${escape_html(task)}</li>`;
-    }
-    $$payload.out += `<!--]--></ul>`;
-  } else {
-    $$payload.out += "<!--[!-->";
-  }
-  $$payload.out += `<!--]--></div></div>`;
-  bind_props($$props, { week, title, tasks });
-  pop();
 }
 function SiteHeroSection($$payload) {
   const valueProps = [
@@ -144,234 +107,127 @@ function CoreFeaturesSection($$payload) {
   }
   $$payload.out += `<!--]--></div></div></section>`;
 }
-function IncludedSection($$payload) {
-  const included = [
-    "Custom design aligned with your brand",
-    "Up to 7 professionally written pages",
-    "Mobile-responsive development",
-    "Contact forms with email integration",
-    "Google Analytics setup",
-    "Basic SEO optimization",
-    "Social media integration",
-    "SSL security certificate",
-    "Website hosting setup guidance",
-    "Content management training",
-    "30 days of post-launch support",
-    "Bug fixes and minor adjustments"
-  ];
-  const notIncluded = [
-    "Domain registration (we'll guide you)",
-    "Hosting fees (typically $10-20/month)",
-    "Stock photos (we'll help source)",
-    "E-commerce functionality",
-    "Custom web applications",
-    "Ongoing maintenance (available separately)"
-  ];
-  $$payload.out += `<section class="py-20 bg-gradient-to-br from-granite-gray-50 to-snowfield-white relative overflow-hidden"><div class="absolute top-20 right-20 w-32 h-32 bg-skyline-blue-100 rounded-full blur-2xl opacity-40"></div> <div class="absolute bottom-20 left-20 w-40 h-40 bg-aspen-gold-100 rounded-full blur-3xl opacity-30"></div> <div class="max-w-7xl mx-auto px-6"><div class="grid lg:grid-cols-2 gap-12"><div class="fade-in-up stagger-0">`;
-  BaseCard($$payload, {
-    class: "h-full p-8 shadow-glow",
-    children: ($$payload2) => {
-      const each_array = ensure_array_like(included);
-      $$payload2.out += `<h3 class="font-display text-2xl font-bold text-skyline-blue-600 mb-6 flex items-center"><svg class="w-8 h-8 mr-3 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> What's Included</h3> <ul class="space-y-3"><!--[-->`;
-      for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-        let item = each_array[$$index];
-        ChecklistItem($$payload2, { text: item, included: true });
-      }
-      $$payload2.out += `<!--]--></ul>`;
-    },
-    $$slots: { default: true }
-  });
-  $$payload.out += `<!----></div> <div class="fade-in-up stagger-1">`;
-  BaseCard($$payload, {
-    class: "h-full p-8 shadow-glow",
-    children: ($$payload2) => {
-      const each_array_1 = ensure_array_like(notIncluded);
-      $$payload2.out += `<h3 class="font-display text-2xl font-bold text-granite-gray-600 mb-6 flex items-center"><svg class="w-8 h-8 mr-3 text-granite-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> What's Not Included</h3> <ul class="space-y-3"><!--[-->`;
-      for (let $$index_1 = 0, $$length = each_array_1.length; $$index_1 < $$length; $$index_1++) {
-        let item = each_array_1[$$index_1];
-        ChecklistItem($$payload2, { text: item, included: false });
-      }
-      $$payload2.out += `<!--]--></ul> <div class="mt-6 p-4 bg-skyline-blue-50 rounded-lg"><p class="text-sm text-skyline-blue-700"><strong>Need more?</strong> Check out our monthly retainer plans for ongoing support, marketing, and growth.</p></div>`;
-    },
-    $$slots: { default: true }
-  });
-  $$payload.out += `<!----></div></div></div></section>`;
-}
-function TimelineSection($$payload) {
-  const timeline = [
-    {
-      week: "W1",
-      title: "Discovery & Strategy",
-      tasks: [
-        "Brand questionnaire & discovery call",
-        "Competitive analysis",
-        "Site architecture planning",
-        "Content outline creation"
-      ]
-    },
-    {
-      week: "W2",
-      title: "Design & Content",
-      tasks: [
-        "Homepage design concepts",
-        "Professional copywriting",
-        "Design refinement",
-        "Mobile layouts"
-      ]
-    },
-    {
-      week: "W3",
-      title: "Development",
-      tasks: [
-        "Full site build-out",
-        "Contact form integration",
-        "SEO implementation",
-        "Mobile optimization"
-      ]
-    },
-    {
-      week: "W4",
-      title: "Launch & Training",
-      tasks: [
-        "Final review & testing",
-        "Launch preparation",
-        "CMS training session",
-        "Post-launch support begins"
-      ]
+function LazyWizard($$payload, $$props) {
+  push();
+  let wizardType = fallback($$props["wizardType"], "lead-capture");
+  let isOpen = fallback($$props["isOpen"], false);
+  let onClose = fallback($$props["onClose"], void 0);
+  let WizardComponent = null;
+  let isLoading = false;
+  const wizardLoaders = {
+    "lead-capture": () => lazyImport(() => import("../../../../chunks/LeadCaptureWizard.js")),
+    "partnership": () => lazyImport(() => import("../../../../chunks/PartnershipWizard.js"))
+  };
+  async function loadWizard() {
+    if (WizardComponent || isLoading) return;
+    isLoading = true;
+    try {
+      WizardComponent = await wizardLoaders[wizardType]();
+    } finally {
+      isLoading = false;
     }
-  ];
-  const each_array = ensure_array_like(timeline);
-  $$payload.out += `<section id="timeline" class="py-20 bg-snowfield-white"><div class="max-w-5xl mx-auto px-6"><div class="text-center mb-12"><h2 class="font-display text-3xl md:text-4xl font-bold text-skyline-blue-600 mb-4">Your 30-Day Journey</h2> <p class="text-xl text-granite-gray-600">From concept to launch in four focused weeks</p></div> <div class="space-y-8"><!--[-->`;
-  for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-    let item = each_array[$$index];
-    TimelineItem($$payload, spread_props([item]));
   }
-  $$payload.out += `<!--]--></div></div></section>`;
-}
-function ProcessSection($$payload) {
-  const processSteps = [
-    {
-      step: "1",
-      title: "Discovery Call",
-      description: "Understand your business and goals"
-    },
-    {
-      step: "2",
-      title: "Strategic Planning",
-      description: "Map out your site structure and content"
-    },
-    {
-      step: "3",
-      title: "Design & Writing",
-      description: "Create your unique brand presence"
-    },
-    {
-      step: "4",
-      title: "Build & Optimize",
-      description: "Develop and optimize for performance"
-    },
-    {
-      step: "5",
-      title: "Launch & Support",
-      description: "Go live with confidence and support"
-    }
-  ];
-  const each_array = ensure_array_like(processSteps);
-  $$payload.out += `<section class="py-20 bg-gradient-to-r from-skyline-blue-600 to-skyline-blue-700 text-white"><div class="max-w-7xl mx-auto px-6"><div class="text-center mb-12"><h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Simple, Transparent Process</h2> <p class="text-xl text-white/90">No surprises, no confusion—just clear steps to your new website</p></div> <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 md:gap-8"><!--[-->`;
-  for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-    let process = each_array[$$index];
-    $$payload.out += `<div class="text-center"><div class="w-14 h-14 sm:w-16 sm:h-16 bg-aspen-gold-400 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 text-skyline-blue-700 font-bold text-lg sm:text-xl">${escape_html(process.step)}</div> <h4 class="font-semibold mb-2 text-sm sm:text-base">${escape_html(process.title)}</h4> <p class="text-xs sm:text-sm text-white/80">${escape_html(process.description)}</p></div>`;
+  function handleClose() {
+    isOpen = false;
+    if (onClose) onClose();
   }
-  $$payload.out += `<!--]--></div></div></section>`;
-}
-function FAQsSection($$payload) {
-  const faqs = [
-    {
-      question: "Why exactly $5,280?",
-      answer: "It's Colorado's elevation in feet—a price that reflects our commitment to local businesses and our mile-high standards."
-    },
-    {
-      question: "What if I need more than 7 pages?",
-      answer: "Additional pages are $420 each. Most small businesses find 7 pages more than sufficient for their needs."
-    },
-    {
-      question: "Can I make changes after launch?",
-      answer: "You get 30 days of bug fixes and minor adjustments. After that, we offer maintenance plans or can train you to make updates yourself."
-    },
-    {
-      question: "Do you work with businesses outside Colorado?",
-      answer: "We focus on Colorado businesses but occasionally make exceptions. The $5,280 price is exclusive to Colorado companies."
-    },
-    {
-      question: "What platform do you build on?",
-      answer: "We use modern, fast, secure platforms like SvelteKit or Next.js, deployed on reliable hosting. No WordPress unless specifically requested."
-    },
-    {
-      question: "How do I know this is right for me?",
-      answer: "If you need a professional website quickly, have a clear budget, and want a partner who understands Colorado business, this is for you."
+  if (isOpen && !WizardComponent) {
+    loadWizard();
+  }
+  if (isOpen) {
+    $$payload.out += "<!--[-->";
+    $$payload.out += `<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm animate-fade-in svelte-9bxyf5">`;
+    if (isLoading) {
+      $$payload.out += "<!--[-->";
+      $$payload.out += `<div class="bg-white rounded-lg p-8 animate-pulse"><div class="flex items-center justify-center space-x-2"><div class="w-4 h-4 bg-skyline-blue-500 rounded-full animate-bounce"></div> <div class="w-4 h-4 bg-skyline-blue-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div> <div class="w-4 h-4 bg-skyline-blue-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div></div> <p class="mt-4 text-granite-gray-600 text-center">Loading...</p></div>`;
+    } else if (WizardComponent) {
+      $$payload.out += "<!--[1-->";
+      $$payload.out += `<div class="animate-slide-up svelte-9bxyf5"><!---->`;
+      WizardComponent?.($$payload, { isOpen, onClose: handleClose });
+      $$payload.out += `<!----></div>`;
+    } else {
+      $$payload.out += "<!--[!-->";
     }
-  ];
-  const each_array = ensure_array_like(faqs);
-  $$payload.out += `<section class="py-20 bg-granite-gray-50"><div class="max-w-4xl mx-auto px-6"><div class="text-center mb-12"><h2 class="font-display text-3xl md:text-4xl font-bold text-skyline-blue-600 mb-4">Frequently Asked Questions</h2></div> <div class="space-y-6"><!--[-->`;
-  for (let $$index = 0, $$length = each_array.length; $$index < $$length; $$index++) {
-    let faq = each_array[$$index];
-    BaseCard($$payload, {
-      class: "p-6",
-      children: ($$payload2) => {
-        $$payload2.out += `<h3 class="font-semibold text-lg text-skyline-blue-600 mb-3">${escape_html(faq.question)}</h3> <p class="text-granite-gray-600 leading-relaxed">${escape_html(faq.answer)}</p>`;
-      },
-      $$slots: { default: true }
+    $$payload.out += `<!--]--></div>`;
+  } else {
+    $$payload.out += "<!--[!-->";
+  }
+  $$payload.out += `<!--]-->`;
+  bind_props($$props, { wizardType, isOpen, onClose });
+  pop();
+}
+function _page($$payload, $$props) {
+  push();
+  let loadedSections = {};
+  let visibleSections = /* @__PURE__ */ new Set();
+  let showWizard = false;
+  let $$settled = true;
+  let $$inner_payload;
+  function $$render_inner($$payload2) {
+    head($$payload2, ($$payload3) => {
+      $$payload3.title = `<title>$5,280 Complete Website Package | weKnowCO</title>`;
+      $$payload3.out += `<meta name="description" content="Get a complete, professional website for your Colorado business in 30 days. $5,280 flat rate, no surprises. Mobile-responsive, SEO-optimized, and built for results."/>`;
     });
+    SiteHeroSection($$payload2);
+    $$payload2.out += `<!----> `;
+    CoreFeaturesSection($$payload2);
+    $$payload2.out += `<!----> <div data-section="included" class="min-h-[50px]">`;
+    if (visibleSections.has("included") && loadedSections.included) {
+      $$payload2.out += "<!--[-->";
+      $$payload2.out += `<div class="animate-fade-in svelte-1ndcety"><!---->`;
+      loadedSections.included?.($$payload2, {});
+      $$payload2.out += `<!----></div>`;
+    } else {
+      $$payload2.out += "<!--[!-->";
+    }
+    $$payload2.out += `<!--]--></div> <div data-section="timeline" class="min-h-[50px]">`;
+    if (visibleSections.has("timeline") && loadedSections.timeline) {
+      $$payload2.out += "<!--[-->";
+      $$payload2.out += `<div class="animate-fade-in svelte-1ndcety"><!---->`;
+      loadedSections.timeline?.($$payload2, {});
+      $$payload2.out += `<!----></div>`;
+    } else {
+      $$payload2.out += "<!--[!-->";
+    }
+    $$payload2.out += `<!--]--></div> <div data-section="process" class="min-h-[50px]">`;
+    if (visibleSections.has("process") && loadedSections.process) {
+      $$payload2.out += "<!--[-->";
+      $$payload2.out += `<div class="animate-fade-in svelte-1ndcety"><!---->`;
+      loadedSections.process?.($$payload2, {});
+      $$payload2.out += `<!----></div>`;
+    } else {
+      $$payload2.out += "<!--[!-->";
+    }
+    $$payload2.out += `<!--]--></div> <div data-section="faqs" class="min-h-[50px]">`;
+    if (visibleSections.has("faqs") && loadedSections.faqs) {
+      $$payload2.out += "<!--[-->";
+      $$payload2.out += `<div class="animate-fade-in svelte-1ndcety"><!---->`;
+      loadedSections.faqs?.($$payload2, {});
+      $$payload2.out += `<!----></div>`;
+    } else {
+      $$payload2.out += "<!--[!-->";
+    }
+    $$payload2.out += `<!--]--></div> <section id="get-started" class="py-20 bg-gradient-to-br from-skyline-blue-600 to-red-rocks-rust text-white"><div class="max-w-4xl mx-auto px-6"><div class="text-center mb-12"><h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Ready for Your $5,280 Website?</h2> <p class="text-xl text-white/90">Let's build something amazing for your Colorado business</p></div> <div class="text-center"><button class="bg-white text-skyline-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-snowfield-white transition-colors duration-300 shadow-lg">Get Started Now</button></div> <div class="text-center mt-8"><p class="text-white/80 mb-4">Have questions? Want to see examples?</p> <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"><a href="/case-stories" class="inline-flex items-center justify-center px-5 sm:px-6 py-3 border-2 border-white/50 text-white rounded-lg hover:bg-white/10 transition-all duration-300 font-semibold text-sm sm:text-base w-full sm:w-auto">View Case Studies <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a> <a href="mailto:hello@weknowco.com?subject=$5,280 Website Inquiry" class="inline-flex items-center justify-center px-5 sm:px-6 py-3 border-2 border-white/50 text-white rounded-lg hover:bg-white/10 transition-all duration-300 font-semibold text-sm sm:text-base w-full sm:w-auto">Email Us Directly <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a></div></div></div></section> `;
+    LazyWizard($$payload2, {
+      wizardType: "lead-capture",
+      onClose: () => showWizard = false,
+      get isOpen() {
+        return showWizard;
+      },
+      set isOpen($$value) {
+        showWizard = $$value;
+        $$settled = false;
+      }
+    });
+    $$payload2.out += `<!---->`;
   }
-  $$payload.out += `<!--]--></div></div></section>`;
-}
-function CTASection($$payload) {
-  $$payload.out += `<section class="py-20 bg-gradient-to-br from-skyline-blue-600 via-skyline-blue-700 to-skyline-blue-800 text-white relative overflow-hidden"><div class="absolute top-0 left-0 w-full h-full opacity-10"><div class="absolute top-10 left-10 w-20 h-20 bg-aspen-gold-400 rounded-full blur-lg"></div> <div class="absolute top-32 right-20 w-16 h-16 bg-white rounded-full blur-md"></div> <div class="absolute bottom-20 left-1/3 w-24 h-24 bg-aspen-gold-400 rounded-full blur-xl"></div> <div class="absolute bottom-10 right-10 w-12 h-12 bg-white rounded-full blur-sm"></div></div> <div class="max-w-4xl mx-auto px-6 text-center relative z-10"><h2 class="font-display text-3xl md:text-5xl font-bold mb-6">Ready to Elevate Your Business?</h2> <p class="text-xl md:text-2xl mb-8 text-white/90">Join the Colorado businesses already growing with professional websites</p> <p class="text-lg mb-10 text-white/80 max-w-2xl mx-auto">One flat rate. One month timeline. Zero surprises. Your website investment that pays for itself.</p> <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">`;
-  BaseButton($$payload, {
-    size: "lg",
-    variant: "secondary",
-    class: "bg-aspen-gold-400 hover:bg-aspen-gold-500 text-skyline-blue-800 font-semibold px-8 py-4 text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200",
-    children: ($$payload2) => {
-      $$payload2.out += `<!---->Start Your $5,280 Website`;
-    },
-    $$slots: { default: true }
-  });
-  $$payload.out += `<!----> `;
-  BaseButton($$payload, {
-    size: "lg",
-    variant: "outline",
-    class: "border-white/30 text-white hover:bg-white/10 px-8 py-4 text-lg",
-    children: ($$payload2) => {
-      $$payload2.out += `<!---->Schedule Discovery Call`;
-    },
-    $$slots: { default: true }
-  });
-  $$payload.out += `<!----></div> <div class="mt-8 pt-8 border-t border-white/20"><p class="text-sm text-white/70">Questions? Call <strong class="text-white">(720) 555-0123</strong> or email <strong class="text-white">hello@weknowco.com</strong></p></div></div></section>`;
-}
-function _page($$payload) {
-  head($$payload, ($$payload2) => {
-    $$payload2.title = `<title>$5,280 Complete Website Package | weKnowCO</title>`;
-    $$payload2.out += `<meta name="description" content="Get a complete, professional website for your Colorado business in 30 days. $5,280 flat rate, no surprises. Mobile-responsive, SEO-optimized, and built for results."/>`;
-  });
-  SiteHeroSection($$payload);
-  $$payload.out += `<!----> `;
-  CoreFeaturesSection($$payload);
-  $$payload.out += `<!----> `;
-  IncludedSection($$payload);
-  $$payload.out += `<!----> `;
-  TimelineSection($$payload);
-  $$payload.out += `<!----> `;
-  ProcessSection($$payload);
-  $$payload.out += `<!----> `;
-  FAQsSection($$payload);
-  $$payload.out += `<!----> <section id="get-started" class="py-20 bg-gradient-to-br from-skyline-blue-600 to-red-rocks-rust text-white"><div class="max-w-4xl mx-auto px-6"><div class="text-center mb-12"><h2 class="font-display text-3xl md:text-4xl font-bold mb-4">Ready for Your $5,280 Website?</h2> <p class="text-xl text-white/90">Let's build something amazing for your Colorado business</p></div> `;
-  LeadCaptureWizard($$payload, {
-    serviceInterest: "5280-site",
-    formName: "$5,280 Site Interest"
-  });
-  $$payload.out += `<!----> <div class="text-center mt-8"><p class="text-white/80 mb-4">Have questions? Want to see examples?</p> <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4"><a href="/case-stories" class="inline-flex items-center justify-center px-5 sm:px-6 py-3 border-2 border-white/50 text-white rounded-lg hover:bg-white/10 transition-all duration-300 font-semibold text-sm sm:text-base w-full sm:w-auto">View Case Studies <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a> <a href="mailto:hello@weknowco.com?subject=$5,280 Website Inquiry" class="inline-flex items-center justify-center px-5 sm:px-6 py-3 border-2 border-white/50 text-white rounded-lg hover:bg-white/10 transition-all duration-300 font-semibold text-sm sm:text-base w-full sm:w-auto">Email Us Directly <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a></div></div></div></section> `;
-  CTASection($$payload);
-  $$payload.out += `<!---->`;
+  do {
+    $$settled = true;
+    $$inner_payload = copy_payload($$payload);
+    $$render_inner($$inner_payload);
+  } while (!$$settled);
+  assign_payload($$payload, $$inner_payload);
+  pop();
 }
 export {
   _page as default

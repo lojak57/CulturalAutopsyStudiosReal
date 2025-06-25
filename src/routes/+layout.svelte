@@ -34,7 +34,7 @@
 	}
 </script>
 
-<div class="min-h-screen bg-snowfield-white flex flex-col">
+<div class="min-h-screen bg-paper-white flex flex-col cursor-retro">
 	<Navigation />
 	<main class="flex-grow">
 		<slot />

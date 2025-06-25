@@ -27,8 +27,20 @@
 			"dest": "/api/leads"
 		},
 		{
+			"src": "^/blog/?(?:/__data.json)?$",
+			"dest": "/blog"
+		},
+		{
 			"src": "^/contact/?(?:/__data.json)?$",
 			"dest": "/(company)/contact"
+		},
+		{
+			"src": "^/episodes/?(?:/__data.json)?$",
+			"dest": "/episodes"
+		},
+		{
+			"src": "^/manifesto/?(?:/__data.json)?$",
+			"dest": "/manifesto"
 		},
 		{
 			"src": "^/plans-growth/?(?:/__data.json)?$",
