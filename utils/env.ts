@@ -1,7 +1,7 @@
 import { browser } from "$app/environment";
 import { SITE_CONFIG } from "$lib/config/site.config";
 
-// Environment configuration for weKnowCO marketing site
+// Environment configuration for Cultural Autopsy Studios marketing site
 export const ENV = {
   // TrueForm API Integration
   TRUEFORM_API_URL: import.meta.env.VITE_TRUEFORM_API_URL || "https://api.trueform.app",

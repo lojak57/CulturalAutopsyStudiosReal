@@ -260,7 +260,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 // Optional: GET endpoint for testing
 export const GET: RequestHandler = async () => {
 	return json({
-		message: 'weKnowCO Lead Capture API',
+		message: 'Cultural Autopsy Studios Lead Capture API',
 		endpoints: {
 			POST: '/api/leads - Submit a new lead',
 		},

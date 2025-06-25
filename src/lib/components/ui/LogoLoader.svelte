@@ -13,7 +13,7 @@
 	<div class="logo-loader-overlay">
 		<div class="logo-loader {sizeClasses}">
 			<img 
-				src="/images/logo/weknowco-icon.svg" 
+				src="/images/logo/cultural-autopsy-studios-icon.svg" 
 				alt="Loading..."
 				class="logo-spinner"
 			/>

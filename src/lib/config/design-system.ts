@@ -1,5 +1,5 @@
 /**
- * weKnowCO Design System Configuration
+ * Cultural Autopsy Studios Design System Configuration
  * 
  * Single source of truth for all design tokens and component configurations.
  * This ensures consistency across the entire application.

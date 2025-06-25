@@ -1,5 +1,5 @@
 /**
- * Error Service for weKnowCO
+ * Error Service for Cultural Autopsy Studios
  * Handles error logging and reporting for the marketing site
  */
 

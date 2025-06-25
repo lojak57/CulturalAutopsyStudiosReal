@@ -39,7 +39,7 @@
 				<div class="aspect-[4/3] bg-gradient-to-br from-skyline-blue-100 to-aspen-gold-100 rounded-2xl p-8 relative overflow-hidden">
 					<!-- Background pattern -->
 					<img 
-						src="/images/logo/weknowco-icon.svg" 
+						src="/images/logo/cultural-autopsy-studios-icon.svg" 
 						alt="" 
 						class="absolute bottom-0 right-0 w-48 h-48 opacity-10"
 					/>
@@ -65,7 +65,7 @@
 						<div class="flex items-center space-x-3">
 							<div class="w-4 h-4 bg-skyline-blue-600 rounded-full animate-pulse"></div>
 							<span class="text-granite-gray-600 font-semibold">Today</span>
-							<span class="text-granite-gray-500">weKnowCO</span>
+							<span class="text-granite-gray-500">Cultural Autopsy Studios</span>
 						</div>
 						
 						<!-- Stats -->

@@ -8,8 +8,8 @@ export const ENV = {
 
 export function getWhiteLabelConfig() {
 	return {
-		brandName: 'weKnowCO',
-		domain: 'weknowco.com',
+		brandName: 'Cultural Autopsy Studios',
+		domain: 'culturalautopsystudios.com',
 		primaryColor: '#1e40af',
 		secondaryColor: '#dc2626'
 	};
