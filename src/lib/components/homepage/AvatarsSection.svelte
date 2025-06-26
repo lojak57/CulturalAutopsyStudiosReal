@@ -2,9 +2,13 @@
   import { SITE_CONFIG } from '$lib/config/site.config';
   
   let hoveredAvatar: string | null = null;
+
+  function createSlug(name: string) {
+    return name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  }
   
   // Avatar images - update these paths once you have the photos
-  const avatarImages = {
+  const avatarImages: { [key: string]: string } = {
     'Holden': '/images/avatars/holden.jpg',
     'Lilly': '/images/avatars/lilly.jpg',
     'Eva': '/images/avatars/eva.jpg',
@@ -29,10 +33,12 @@
     <!-- Avatars grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {#each SITE_CONFIG.avatars as avatar}
-        <button 
-          class="relative group cursor-pointer text-left"
+        <a 
+          href={`/avatars/${createSlug(avatar.name)}`}
+          class="relative group text-left block"
           on:mouseenter={() => hoveredAvatar = avatar.name}
           on:mouseleave={() => hoveredAvatar = null}
+          aria-label={`View details for ${avatar.name}`}
         >
           <!-- Avatar card -->
           <div class="bg-tape-gray-900 border-2 border-vcr-blue-600/30 hover:border-vcr-blue-400 
@@ -98,7 +104,7 @@
           <!-- Connection lines (subtle) -->
           <div class="absolute -right-4 top-1/2 w-8 h-px bg-vcr-blue-600/20 hidden lg:block 
                       group-hover:bg-vcr-blue-400/40 transition-colors duration-300"></div>
-        </button>
+        </a>
       {/each}
     </div>
 

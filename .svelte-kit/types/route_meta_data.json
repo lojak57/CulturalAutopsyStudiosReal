@@ -4,6 +4,7 @@
 	"/api/leads": [
 		"src/routes/api/leads/+server.ts"
 	],
+	"/avatars/[slug]": [],
 	"/blog": [],
 	"/contact": [],
 	"/episodes": [],

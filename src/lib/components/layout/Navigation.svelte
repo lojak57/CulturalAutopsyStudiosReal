@@ -8,7 +8,7 @@
 		{ label: 'Index', href: '/' },
 		{ label: 'Archive', href: '/episodes' },
 		{ label: 'Tape', href: '/blog' },
-		{ label: 'Exit', href: '/manifesto', special: true }
+		{ label: 'Manifesto', href: '/manifesto', special: true }
 	];
 	
 	$: currentPath = $page.url.pathname;
