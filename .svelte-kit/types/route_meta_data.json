@@ -1,5 +1,6 @@
 {
 	"/": [],
+	"/admin": [],
 	"/api/leads": [
 		"src/routes/api/leads/+server.ts"
 	],
