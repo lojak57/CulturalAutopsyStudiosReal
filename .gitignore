@@ -49,3 +49,6 @@ coverage/
 .directory
 .Trash-*
 .nfs*
+
+# Large video files
+static/videos/*.mp4
