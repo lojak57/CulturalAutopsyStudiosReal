@@ -122,7 +122,7 @@ class ContentService {
           id: 'hero-main',
           name: 'Main Hero Video',
           location: 'hero',
-          videoUrl: '/videos/cas-trailer.mp4',
+          videoUrl: '', // Will be set to YouTube/Vimeo URL
           isActive: true
         }
       ]
